@@ -26,11 +26,11 @@ jobs:
             git pull origin main
 
             # 3. Stop and remove the existing container (ignore error if it doesn't exist)
-            docker stop wpoms_server || true
-            docker rm wpoms_server || true
+            sudo docker stop wpoms_server || true
+            sudo docker rm wpoms_server || true
 
             # 4. Build the new image
-            docker build -t wpoms_server .
+            sudo docker build -t wpoms_server .
 
             # 5. Run the new container
-            docker run -d --name wpoms_server -p 8080:8081 wpoms_server
+            sudo docker run -d --name wpoms_server -p 8888:8081 wpoms_server
