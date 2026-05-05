@@ -45,6 +45,15 @@ public class SecurityConfig {
                     "/webjars/**"
                 ).permitAll()
                 
+                // ========== ACTUATOR ENDPOINTS (Add this) ==========
+                .requestMatchers(
+                    "/actuator",
+                    "/actuator/**",
+                    "/actuator/health",
+                    "/actuator/info",
+                    "/actuator/metrics"
+                ).permitAll()
+                
                 // ========== CUSTOMER ENDPOINTS (Only CUSTOMER role) ==========
                 .requestMatchers(
                     "/api/customer/register-customer",
@@ -63,8 +72,11 @@ public class SecurityConfig {
                 .requestMatchers(
                     "/api/admin/register-manufacturer",
                     "/api/admin/manufacturer",
-                    "/api/admin/update-manufacture"
+                    "/api/admin/update-manufacture",
+                    "/api/admin/manufacturer/create-staff",
+                    "/api/admin/manufacturer/staff-list"
                 ).hasRole("MANUFACTURER")
+                
                 .anyRequest().denyAll()
             )
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
