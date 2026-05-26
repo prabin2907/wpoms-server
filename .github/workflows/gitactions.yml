@@ -29,7 +29,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             # 1. Navigate to the repo
-            # cd /home/${{ secrets.EC2_USER }}/git/wpoms_server
+            cd /home/${{ secrets.EC2_USER }}/git/wpoms_server
 
             # 2. Pull the latest code
             git pull origin main
